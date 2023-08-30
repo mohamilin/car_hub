@@ -18,8 +18,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Documentations
+1. Setup Project
+    - ![Image Setup](/documentation//assets/01%20-%20Setup.png)
+    - Change styles in globals.css with this code [globals.css](/documentation/css/globals.css)
+    - Change the talwind config [tailwind.config.ts](/documentation/tailwind.config.ts)
+    - run the project `npm run dev`
+2. Create components
 
+
+
+
+## Learn More
+1. About CSS
+    - margin auto
+    - max-width / min-width
+    - flex-1
+    - object-contain
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
