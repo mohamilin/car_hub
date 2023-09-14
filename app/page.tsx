@@ -2,28 +2,39 @@
 
 import { useEffect, useState } from "react";
 
-import { SearchBar, CustomFilter, Hero, CardCar } from "@/components";
+import { SearchBar, CustomFilter, Hero, CardCar, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
+import { HomeProps } from "@/types";
 
-export default function Home() {
+import { fuels, yearsOfProduction } from "@/contants";
+export default function Home({ searchParams }: HomeProps) {
   const [cars, setCars] = useState([]);
   const [search, setSearch] = useState("corolla");
   const [messageError, setMessageError] = useState("");
   useEffect(() => {
-    let params = "bmw";
+    let params = {
+      manufacturer: searchParams.manufacturer || "",
+      year: searchParams.year || 2022,
+      model: searchParams.model || "",
+      limit: searchParams.limit || 8,
+      fuel: searchParams.fuel || "",
+    };
     fetchCars(params)
       .then((res) => {
         console.log(res);
         setCars(res);
       })
       .catch((e) => {
-        console.log(
-          e.response.data.info,
-          "https://meliasehatsejahtera.biz.id/#"
-        );
+        console.log(e.response.data.info);
         setMessageError(e.response.data.info);
       });
-  }, []);
+  }, [
+    searchParams.fuel,
+    searchParams.limit,
+    searchParams.manufacturer,
+    searchParams.model,
+    searchParams.year,
+  ]);
 
   const dataIsEmpty = !Array.isArray(cars) || cars.length < 1 || !cars;
 
@@ -40,8 +51,8 @@ export default function Home() {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
-            <CustomFilter title="Fuel" />
-            <CustomFilter title="Year" />
+            <CustomFilter title="Fuel" options={fuels} />
+            <CustomFilter title="Year" options={yearsOfProduction} />
           </div>
         </div>
 
@@ -52,12 +63,16 @@ export default function Home() {
                 <CardCar car={item} key={index} />
               ))}
             </div>
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > cars?.length}
+            />
           </section>
         ) : (
           <div className="home__error-container">
             {messageError ? (
               <h2 className="text-black text-xl font-bold">
-                SERVER ERROR <br/>
+                SERVER ERROR <br />
                 <span>{messageError}</span>
               </h2>
             ) : (
