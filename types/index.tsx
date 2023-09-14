@@ -10,8 +10,8 @@ export interface CustomButtonProps {
 }
 
 export interface SearchManufactureProps {
-  manufacture: string;
-  setManufacture: (manufacture: string) => void;
+  manufacturer: string;
+  setManuFacturer: (manufacture: string) => void;
 }
 
 export interface CardCarProps {
@@ -27,4 +27,30 @@ export interface CardCarProps {
   model: string;
   transmission: string;
   year: number;
+}
+
+export interface FilterProps {
+  manufacturer?: string;
+  year?: number;
+  model?: string;
+  limit?: number;
+  fuel?: string;
+}
+
+export interface HomeProps {
+  searchParams: FilterProps
+}
+
+export interface OptionProps {
+  title: string;
+  value: string;
+}
+export interface CustomFilterProps {
+  title: string;
+  options: OptionProps[]
+}
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean
 }
