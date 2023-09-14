@@ -2,17 +2,21 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
-  const handleScroll = () => {};
+  const router = useRouter()
+  const handleScroll = () => {
+    router.push('/')
+  };
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">
         <h1 className="hero__title">
-          find, book, or rent a car -quickly and easily
+         Expore a car -quickly and easily
         </h1>
         <p className="hero__subtitle">
-          Streamline your car rental experience with effortless booking process.
+          Enjoy exploring the car
         </p>
         <CustomButton
           title="Explore Cars"
