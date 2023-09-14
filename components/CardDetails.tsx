@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { CardCarProps } from "@/types";
 import { Fragment } from "react";
+import { generateImageUrl } from "@/utils";
 
 interface CardDetailsProps {
   isOpen: boolean;
@@ -15,7 +16,6 @@ export default function CardDetails({
   closeModal,
   car,
 }: CardDetailsProps) {
-  console.log(closeModal, "close");
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -62,7 +62,7 @@ export default function CardDetails({
                   <div className="flex-1 flex flex-col fap-3 ">
                     <div className="relative w-full h-40 bg-pattern bg-cover bg-center">
                       <Image
-                        src="/hero.png"
+                        src={`${generateImageUrl(car)}`}
                         alt="logo"
                         fill
                         priority
@@ -72,7 +72,7 @@ export default function CardDetails({
                     <div className="flex gap-3">
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
+                        src={`${generateImageUrl(car, '29')}`}
                           fill
                           priority
                           className="object-contain"
@@ -81,7 +81,7 @@ export default function CardDetails({
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
+                         src={`${generateImageUrl(car, '33')}`}
                           fill
                           priority
                           className="object-contain"
@@ -90,7 +90,7 @@ export default function CardDetails({
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={`${generateImageUrl(car, '13')}`}
                           fill
                           priority
                           className="object-contain"
