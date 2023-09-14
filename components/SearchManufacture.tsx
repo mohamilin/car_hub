@@ -7,8 +7,8 @@ import { SearchManufactureProps } from "@/types";
 import { manufacturers } from "@/contants";
 
 export default function SearchManufacture({
-  manufacture,
-  setManufacture,
+  manufacturer,
+  setManuFacturer,
 }: SearchManufactureProps) {
   const [query, setQuery] = useState("");
 
@@ -24,7 +24,7 @@ export default function SearchManufacture({
 
   return (
     <div className="search-manufacturer">
-      <Combobox value={manufacture} onChange={setManufacture} >
+      <Combobox value={manufacturer} onChange={setManuFacturer} >
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
@@ -38,7 +38,7 @@ export default function SearchManufacture({
           <Combobox.Input
             className="search-manufacturer__input"
             placeholder="Search Car"
-            displayValue={(manufacture: string) => manufacture}
+            displayValue={(manufacturer: string) => manufacturer}
             onChange={(e) => setQuery(e.target.value)}
           />
           <Transition
